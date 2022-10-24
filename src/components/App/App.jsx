@@ -21,7 +21,7 @@ export const App = () => {
     const parsedLocalContacts = JSON.parse(localContacts)
 
     if (parsedLocalContacts) {
-     setContacts(prevState => [...prevState, ...parsedLocalContacts])
+     setContacts(parsedLocalContacts)
     }
 
   }, [])
