@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import { Button, ListItem } from '../ContactList/ContactList.styled'
 import { BsTrash } from "react-icons/bs";
+
+
 export const ContactListItem = ({ id, name, number, onDeleteContact,  }) => (
   <ListItem key={id}>
     <span>{name}:</span><span>{number}</span>

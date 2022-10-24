@@ -1,31 +1,31 @@
-import { Component } from "react";
+import { useState } from "react";
 import { Label, Input, Button, FormWrapper } from "./Form.styled";
 import PropTypes from 'prop-types';
 import { Formik, ErrorMessage } from 'formik'
 import * as yup from 'yup'
 
-export class FormContact extends Component {
-  state = {
-    name: '',
-    number: ''
-  };
+export const FormContact = ({onSubmit}) => {
+  const [name, ] = useState('');
+  const [number, ] = useState('');
+  
+  
 
-    schema = yup.object().shape({
+    const schema = yup.object().shape({
     name: yup.string().required(),
     number: yup.string().min(6).required(),
   })
 
-  handleSubmit = (values, {resetForm}) => {
-    this.props.onSubmit(values)
+  const handleSubmit = (values, {resetForm}) => {
+    onSubmit(values)
     resetForm();
   }
 
-  render() {
+  
     return (
       <Formik
-        initialValues={this.state}
-        onSubmit={this.handleSubmit}
-        validationSchema={this.schema}
+        initialValues={{name, number}}
+        onSubmit={handleSubmit}
+        validationSchema={schema}
       >
         <FormWrapper  >
             <Label>
@@ -50,7 +50,7 @@ export class FormContact extends Component {
         </Formik>
     )
   }
-}
+
 
 FormContact.propTypes = {
   onSubmit: PropTypes.func,
